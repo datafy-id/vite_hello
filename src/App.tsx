@@ -1,30 +1,37 @@
-import { Button } from "@/components/ui/button";
+import { SearchForm } from "@/components/hotel/search-form";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { useState } from "react";
+import { Demo1, Demo2, Demo3 } from "./components/misc";
+
+const components = {
+  SearchForm,
+  Demo1,
+  Demo2,
+  Demo3,
+};
 
 function App() {
+  const [selectedComponent, setSelectedComponent] = useState("Demo3");
+  const Component = components[selectedComponent as keyof typeof components];
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-svh gap-8">
-
-      <div className="bg-white dark:bg-gray-800 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5">
-        <div>
-          <span className="inline-flex items-center justify-center rounded-md bg-indigo-500 p-2 shadow-lg">
-            AAA
-          </span>
-        </div>
-        <h3 className="text-gray-900 dark:text-white mt-5 text-base font-medium tracking-tight ">
-          Writes upside-down
-        </h3>
-        <p className="text-gray-500 dark:text-gray-400 mt-2 text-sm ">
-          The Zero Gravity Pen can be used to write in any orientation,
-          including upside-down. It even works in outer space.
-        </p>
+    <div className="border-8 border-green-500 p-8">
+      <div className="mb-4">
+        <RadioGroup
+          value={selectedComponent}
+          onValueChange={setSelectedComponent}
+          className="flex flex-row gap-2"
+        >
+          {Object.keys(components).map((name) => (
+            <div key={name} className="flex items-center space-x-2">
+              <Label htmlFor={name}>{name}</Label>
+              <RadioGroupItem value={name} id={name} />
+            </div>
+          ))}
+        </RadioGroup>
       </div>
-
-      <Button>Click me</Button>
-      <Button variant={"secondary"}>Click me</Button>
-      <Button variant={"destructive"}>Click me</Button>
-      <Button variant={"outline"}>Click me</Button>
-      <Button variant={"ghost"}>Click me</Button>
-      <Button variant={"link"}>Click me</Button>
+      <Component />
     </div>
   );
 }

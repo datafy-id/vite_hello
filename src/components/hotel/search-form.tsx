@@ -45,7 +45,7 @@ export function SearchForm() {
     console.log(data);
   };
 
-  const isCollapsed = true;
+  // const isCollapsed = true;
 
   return (
     <div>

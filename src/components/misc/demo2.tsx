@@ -28,7 +28,7 @@ export function Demo2() {
       </div>
 
       <br />
-      
+
       <div className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md">
         {/* Parent with group class */}
         <div className="group hover:bg-blue-100 p-4 rounded transition-colors">
@@ -53,6 +53,19 @@ export function Demo2() {
           <p className="text-gray-500 group-hover/sidebar:text-gray-900">
             This uses a named group modifier
           </p>
+        </div>
+      </div>
+
+      <br />
+
+      {/* USING DATA-SLOT */}
+
+      <div className="max-w-md mx-auto">
+        <div className="[&_[data-slot=action]]:hover:underline">
+          <div>This won't be underlined when hovered</div>
+          <div data-slot="action">
+            <div>AAAA</div>
+          </div>
         </div>
       </div>
     </div>

@@ -2,17 +2,22 @@ import { SearchForm } from "@/components/hotel/search-form";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useState } from "react";
-import { Demo1, Demo2, Demo3 } from "./components/misc";
+import { Demo1, Demo2, Demo3, DatePickerDemo1, DatePickerDemo2 } from "./components/misc";
+import { Basic, BasicSelect } from "./components/rac/basic";
 
 const components = {
+  Basic,
+  BasicSelect,
   SearchForm,
   Demo1,
   Demo2,
   Demo3,
+  DatePickerDemo1,
+  DatePickerDemo2,
 };
 
 function App() {
-  const [selectedComponent, setSelectedComponent] = useState("Demo3");
+  const [selectedComponent, setSelectedComponent] = useState("Demo1");
   const Component = components[selectedComponent as keyof typeof components];
 
   return (
